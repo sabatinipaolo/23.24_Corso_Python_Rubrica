@@ -29,12 +29,12 @@ def contattiDaRicerca(csvFile,stringaRicerca):
                     contattiRicercati.append([nome,telefono])
     return contattiRicercati
 
-def rimuoviContatti( csvFile , contattiRicercati ):
+def rimuoviContatti( csvFile , contattiDaRimuovere ):
     contattiDaMantenere = []
     with open(csvFile, 'r') as file:
         reader = csv.reader(file)
         for riga in reader:
-            if riga not in contattiRicercati :
+            if riga not in contattiDaRimuovere :
                 contattiDaMantenere.append(riga)
 
     with open(csvFile, 'w', newline='') as file:

@@ -29,13 +29,13 @@ while True:
 
     elif scelta in ("R", "r"):
         stringaRicerca = input("Inserisci nome e/o tel da Cancellare: ")
-        contattiRicercati = contattiDaRicerca(csvFile, stringaRicerca)
-        if contattiRicercati:
+        contattiDaRimuovere = contattiDaRicerca(csvFile, stringaRicerca)
+        if contattiDaRimuovere:
             print("ATTENZIONE I SEGUNETI CONTATTI VERRANNO CANCELLATI")
-            stampaSelezioneDiContatti(contattiRicercati)
+            stampaSelezioneDiContatti(contattiDaRimuovere)
             risposta = input("Sei sicuro di voler procedere? (S/n)")
             if risposta in ("S", "s"):
-                rimuoviContatti(csvFile, contattiRicercati)
+                rimuoviContatti(csvFile, contattiDaRimuovere)
                 print ("contatti cancellati")
         else:
             print("nilla da cancellare")
