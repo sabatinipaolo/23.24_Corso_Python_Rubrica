@@ -1,4 +1,3 @@
-from enum import nonmember
 from RubricaMod import *
 
 csvFile = "rubrica.csv"
