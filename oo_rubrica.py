@@ -1,6 +1,4 @@
 import csv
-import gc
-
 
 class Rubrica:
     def __init__(self, nomeFile="rubrica.csv"):
@@ -16,7 +14,13 @@ class Rubrica:
             wr = csv.writer(file)
             wr.writerows(self.lista)
 
+    def aggiunge_contatto(self, contatto):
+        self.lista.append(contatto)
 
+    def rimuove_contatti( self, contatti_da_rimuovere ):
+        self.lista = [ x for x in self.lista if x not in contatti_da_rimuovere ]
+
+ 
 
 class BrowserRubrica:
     def __init__(self, rubrica):
@@ -71,32 +75,26 @@ class Comando:
     def isQuit():
         pass
 
-
 class Comando_lista(Comando):
     def __init__(self, rubrica) -> None:
         super().__init__(rubrica)
 
     def exec(self):
-        for riga in self.rubrica.lista :
+        for riga in self.rubrica.lista :  #rubrica espone implementazione!!
             print ( ' ,'.join( riga))
-       # print([x for x in self.rubrica.lista])
-            
+            print ( *riga , sep =", " )
 
 class Comando_aggiungi(Comando):
     def __init__(self, rubrica) -> None:
         super().__init__(rubrica)
 
     def exec(self):
-        for riga in self.rubrica.lista :
-            print ( ' ,'.join( riga))
-       # print([x for x in self.rubrica.lista])
-            
-
-
-
-
-
-
+        #todo: controllare se non inserisce virgole
+        nome=input("nome =")
+        telefono=input("telefono =")
+        contatto=[" ".join(nome.split()).strip(), " ".join(telefono.split()).strip()]
+        self.rubrica.aggiunge_contatto( contatto )
+  
 class Comando_salva(Comando):
     def __init__(self, rubrica) -> None:
         super().__init__(rubrica)
@@ -106,10 +104,7 @@ class Comando_salva(Comando):
         if nomeFile=="" : 
               self.rubrica.salva( self.rubrica.nomeFile)
         else: self.rubrica.salva( nomeFile )
-
-
-
-        
+       
 class Comando_non_riconosciuto(Comando):
     def __init__(self, rubrica) -> None:
         super().__init__(rubrica)
@@ -124,6 +119,7 @@ class Comando_exit(Comando):
 
     def exec(self):
         pass
+
 class Comando_foo(Comando):
     def __init__(self, rubrica) -> None:
         super().__init__(rubrica)
