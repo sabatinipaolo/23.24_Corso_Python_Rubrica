@@ -1,15 +1,16 @@
-from oo_rubrica import Rubrica 
+from oo_rubrica import Rubrica
 from oo_rubrica import BrowserRubrica
 
-rubrica=Rubrica()
+rubrica = Rubrica()
 
 br = BrowserRubrica(rubrica)
 
-#br.lista()
+# br.lista()
 
-#print (type (rubrica.listaContatti()) )
+# print (type (rubrica.listaContatti()) )
 
 while True:
     comando = br.getComando()
     comando.exec()
-    if comando.is_exit: break
+    if comando.is_exit:
+        break
