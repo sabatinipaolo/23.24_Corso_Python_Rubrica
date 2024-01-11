@@ -4,7 +4,7 @@ csvFile = "rubrica.csv"
 creaCsv(csvFile)
 
 
-#modifica  
+#modifica  altra 
 
 
 while True:
