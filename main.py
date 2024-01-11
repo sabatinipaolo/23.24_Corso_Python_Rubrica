@@ -3,6 +3,10 @@ from RubricaMod import *
 csvFile = "rubrica.csv"
 creaCsv(csvFile)
 
+
+#modifica  
+
+
 while True:
     print(
         "\n[ L/l lista contatti] [ A/a aggiungi contatto ]  [ C/c cerca contatto ] [ R/r Rimuovi Contatto ] [ E/e Exit ]"
