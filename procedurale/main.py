@@ -1,5 +1,5 @@
 from enum import nonmember
-from RubricaMod import *
+from procedurale.RubricaMod import *
 
 csvFile = "rubrica.csv"
 creaCsv(csvFile)
@@ -36,7 +36,7 @@ while True:
             risposta = input("Sei sicuro di voler procedere? (S/n)")
             if risposta in ("S", "s"):
                 rimuoviContatti(csvFile, contattiDaRimuovere)
-                print ("contatti cancellati")
+                print("contatti cancellati")
         else:
             print("nilla da cancellare")
 
