@@ -1,7 +1,7 @@
 from enum import nonmember
-from procedurale.RubricaMod import *
+from proc_Rubrica_modulo import *
 
-csvFile = "rubrica.csv"
+csvFile = "proc_rubrica.csv"
 creaCsv(csvFile)
 
 while True:
