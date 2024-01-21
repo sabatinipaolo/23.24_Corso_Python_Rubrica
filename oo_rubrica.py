@@ -183,7 +183,7 @@ class Comando_rimuovi(Comando):
                 "ATTENZIONE I SEGUENTI CONTATTI SOPRAELENCATI CONTATTI VERRANNO CANCELLATI"
             )
 
-            risposta = input("Sei sicuro di voler procedere? (S/n)")
+            risposta = self.input_con_msg_e_default("Sei sicuro di voler procedere (sS/nN) ?","N")
             if risposta in ("S", "s"):
                 self.rubrica.rimuove_contatti(contattiDaRimuovere)
                 print("contatti rimossi")
