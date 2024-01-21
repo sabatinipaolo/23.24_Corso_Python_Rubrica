@@ -1,8 +1,12 @@
-from enum import nonmember
+
 from proc_Rubrica_modulo import *
 
 csvFile = "proc_rubrica.csv"
 creaCsv(csvFile)
+
+
+#modifica  altra 
+
 
 while True:
     print(
