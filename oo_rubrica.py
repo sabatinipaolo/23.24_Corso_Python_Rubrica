@@ -47,6 +47,7 @@ class BrowserRubrica:
         print(
             f"\nrubrica: { self.rubrica.nomeFile} \n"
             + "[ L/l lista contatti    ] [ LG/lg lista per gruppi ] [ C/c cerca contatto/i ]\n"
+            + "[ CC/cc cerca contatto x colonne] \n"
             + "[ A/a aggiungi contatto ] [ R/r Rimuovi Contatto   ] [ S/s Salva            ] [ E/Q/e/q Exit ]"
         )
 
@@ -58,8 +59,10 @@ class BrowserRubrica:
             return Comando_stampa_a_gruppi(self.rubrica)
         elif scelta in "Aa":
             return Comando_aggiungi(self.rubrica)
-        elif scelta in "Cc":
+        elif scelta in ("C", "c"):
             return Comando_cerca_contatti(self.rubrica)
+        elif scelta in ("CC", "cc"):
+            return Comando_cerca_contatti_per_colonne(self.rubrica)
         elif scelta in "Rr":
             return Comando_rimuovi(self.rubrica)
         elif scelta in "EeQq":
@@ -73,6 +76,8 @@ class BrowserRubrica:
 class Comando:
     lastRicerca = ""
     lastDimensioneGruppo = ""
+
+    lastRicercaPerColonne = ("", "", "", "", "")
 
     def aggiorna_last_ricerca(classe, stringa):
         Comando.lastRicerca = stringa
@@ -191,6 +196,14 @@ class Comando_cerca_contatti(Comando):
             self.stampa_contatti(contattiTrovati)
         else:
             print("\n nulla da visualizzare \n")
+
+
+class Comando_cerca_contatti_per_colonne(Comando):
+    def __init__(self, rubrica) -> None:
+        super().__init__(rubrica)
+
+    def exec(self):
+        return
 
 
 class Comando_rimuovi(Comando):
