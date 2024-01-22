@@ -55,7 +55,7 @@ class BrowserRubrica:
         if scelta in "Ll":
             return Comando_stampa_completa(self.rubrica)
         elif scelta in ("LG", "lg", "Lg", "lG"):
-            return Comando_stampa_a_gruppi(self.rubrica, 5)
+            return Comando_stampa_a_gruppi(self.rubrica)
         elif scelta in "Aa":
             return Comando_aggiungi(self.rubrica)
         elif scelta in "Cc":
@@ -72,6 +72,7 @@ class BrowserRubrica:
 
 class Comando:
     lastRicerca = ""
+    lastDimensioneGruppo = ""
 
     def aggiorna_last_ricerca(classe, stringa):
         Comando.lastRicerca = stringa
@@ -117,13 +118,23 @@ class Comando_stampa_completa(Comando):
 
 
 class Comando_stampa_a_gruppi(Comando):
-    def __init__(self, rubrica, dimensioneGruppo=5) -> None:
+    def __init__(self, rubrica) -> None:
         super().__init__(rubrica)
-        self.dimensioneGruppo = dimensioneGruppo
+        # self.dimensioneGruppo = dimensioneGruppo
 
     def exec(self):
+        # TODO: modificare input_con_messa.... in modo che passi una funzione
+        # che determini se il valore inserito verifichi se sia ammesso
+
+        dimensione = self.input_con_msg_default_valori_ammessi(
+            "inserisci la dimensione del gruppo", "5", ""
+        )
+        # TODO: inserire controlli  vedi sopra
+        dimensione = int(dimensione)
+        self.lastDimensioneGruppo = dimensione
+
         # https://realpython.com/python-itertools/
-        args = [iter(self.rubrica.lista)] * self.dimensioneGruppo
+        args = [iter(self.rubrica.lista)] * dimensione
         gruppi = zip_longest(*args, fillvalue=None)
 
         for gruppo in gruppi:
