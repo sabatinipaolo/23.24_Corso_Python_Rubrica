@@ -33,6 +33,10 @@ class Rubrica:
 
     def rimuove_contatti(self, contatti_da_rimuovere):
         self.lista = [x for x in self.lista if x not in contatti_da_rimuovere]
+        #oppure 
+        #for contatto in contatti_da_rimuovere : self.lista.remove(contatto)
+        # mi sembrano totalmente equivalenti .....
+            
         self.modificata = True
 
 
