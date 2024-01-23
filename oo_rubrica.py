@@ -97,8 +97,6 @@ class Comando:
                 # print ( ' ,'.join( riga))
                 print(*riga, sep=", ")
 
-    def seleziona_contatti(self, messaggio, stringaDaRicercare):
-        pass
 
     def input_con_msg_default_valori_ammessi(
         self, messaggio, default, valoriAmmessi=""
@@ -194,7 +192,7 @@ class Comando_cerca_contatti(Comando):
         )
         self.aggiorna_last_ricerca(stringaDaRicercare)
 
-        contattiTrovati = self.rubrica.ricerca_contatti(stringaDaRicercare)
+        contattiTrovati = self.rubrica.seleziona_contatti_per_riga_blanda(stringaDaRicercare)
 
         if contattiTrovati:
             self.stampa_contatti(contattiTrovati)
@@ -221,7 +219,7 @@ class Comando_rimuovi(Comando):
         )
         self.aggiorna_last_ricerca(stringaDaRicercare)
 
-        contattiDaRimuovere = self.rubrica.ricerca_contatti(stringaDaRicercare)
+        contattiDaRimuovere = self.rubrica.seleziona_contatti_per_riga_blanda(stringaDaRicercare)
         if not contattiDaRimuovere:
             print("nulla da rimuovere")
         else:
