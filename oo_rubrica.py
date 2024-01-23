@@ -25,14 +25,18 @@ class Rubrica:
         self.modificata = True
 
     def ricerca_contatti(self, stringaRicerca):
-        contattiRicercati = []
-        for riga in self.lista:
-            if any(stringaRicerca in s for s in riga):
-                contattiRicercati.append(riga)
-        return contattiRicercati
+        return [
+            riga
+            for riga in self.lista
+            if any(stringaRicerca in campo for campo in riga)
+        ]
 
     def rimuove_contatti(self, contatti_da_rimuovere):
         self.lista = [x for x in self.lista if x not in contatti_da_rimuovere]
+        #oppure 
+        #for contatto in contatti_da_rimuovere : self.lista.remove(contatto)
+        # mi sembrano totalmente equivalenti .....
+            
         self.modificata = True
 
 
